@@ -89,20 +89,25 @@ app.post('/action_delete', function (req, res) {
         name: req.body.name,
         roll: req.body.roll
     });
-    res.redirect('./');
+    res.redirect('back');
 
 
 })
 
 // For deleting data from list using roll as unique key on from random index
 app.get('/delete-contact/', function (req, res) {
-    console.log(req.query);
-    let roll = req.query.roll; //getting query from the url
-    let contactIndex = contactList.findIndex(contact => contact.roll == roll);
-    if (contactIndex != -1) {
-        contactList.splice(contactIndex, 1)
-    }
-    return res.redirect('back');
+ 
+    let id = req.query.id;
+    // find the contact in the database using id and delete
+    Contact.findByIdAndDelete(id, (err)=>{
+            if(err){
+          console.log("error in deleting an object from database");
+          return;
+        }
+         res.redirect('back');
+
+        })
+
 })
 
 
