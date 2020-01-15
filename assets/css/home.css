@@ -1,0 +1,62 @@
+body{
+    text-align: center;
+}
+#form-main-body>div{
+    margin-top: 10px;
+}
+#form-list{
+   margin-left: 30%;
+   
+}
+
+
+#list-section:nth-child(2n){
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: inherit;
+    background-color: blueviolet;
+    margin-top: 0.2%;
+    color: white;
+    padding-top:  2%;
+    padding-bottom:  2%;
+    font-weight: bolder;
+    font-size: 1.2rem;
+
+
+}
+
+#list-section:nth-child(2n+1){
+ 
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: inherit;
+    background-color: gray;
+    margin-top: 0.2%;
+    color: white;
+    padding-top:  2%;
+    padding-bottom:  2%;
+font-size: 1.2rem;
+    font-weight: bolder;
+   
+}
+
+input{
+    border-style: none;
+    border: 1px solid blue;
+    height: 30px;
+    text-align: center;
+}
+
+button{
+    border-style: none;
+    border: 1px solid blue;
+    height: 30px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    height: 35px;
+}
