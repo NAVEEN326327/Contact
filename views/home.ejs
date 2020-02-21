@@ -12,28 +12,47 @@
 
 <body>
 
-    <h1>Contact List</h1>
+    <h1>Event List</h1>
     <i class="fa fa-address-book fa-4x"></i>
     <div id="form-main-body">
         <div>
             <form action="/action_handle" method="POST">
-                <input type="text" placeholder="Enter name" name="name" required>
-                <input type="number" placeholder="Phone Number" name="roll" required>
-                <button type="submit">Add Contact</button>
+                <label>Event name: </label> <input type="text" placeholder="Enter Event name" name="ename"
+                    required> <br>
+                    <label>Organizer name: </label> <input type="text" placeholder="Enter your name" name="name"
+                    required> <br>
+                <label>Enter Event Starting Date:</label> <input type="date" placeholder="Enter Event date" name="date1"
+                    required> <br>
+                <label>Enter Event End Date:</label> <input type="date" placeholder="Enter Event date" name="date2"
+                    required> <br>
+                <label>Description:<label> <textarea></textarea> <br>
+                        <label>Location:</label> <input type="text" placeholder="Location" name="place" required> <br>
+                        <label>Contact Information :</label> <input type="number" placeholder="phone no." name="mobile"
+                            required> <br>
+                        <label>Contact Email:</label> <input type="email" placeholder="Enter Email" name="email"
+                            required> <br>
+
+                        <button type="submit">Publish Event</button>
 
             </form>
-            
-            <form action="action_delete" method="POST">
+
+            <!-- <form action="action_delete" method="POST">
                 <button type="submit">Delete</button>
-            </form>
+            </form> -->
         </div>
         <div id="form-list">
             <ul id="ul-list">
                 <% for(let i of contact_list) {%>
                 <li id="list-section">
+                    <span> <%= i.ename %> </span>
                     <span> <%= i.name %> </span>
-                    <span> <%= i.roll %> </span>
-                    <a href="/delete-contact/?id=<%= i._id %>"> 
+                    <span> <%= i.date1 %> </span>
+                    <span> <%= i.date2 %> </span>
+                     <span> <%= i.place %> </span>
+                    <span> <%= i.mobile %> </span>
+                    <span> <%= i.email %> </span>
+
+                    <a href="/delete-contact/?id=<%= i._id %>">
                         <i class="fa fa-minus-square"></i>
                     </a>
                 </li>

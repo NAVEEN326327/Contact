@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const port = 7000;
+const port = 7001;
 
 const db = require('./config/mongoose');
 const Contact = require('./models/contact');
@@ -13,27 +13,27 @@ app.use(express.urlencoded());  // Body parser // Middleware
 app.use(express.static('assets'));  // USed for frontend css, images and js files
 
 
-// Middleware1
-app.use(function (req, res, next) {
-    req.myName = "Naveen";
-    console.log('middeleware 1 called');
-    next();
-});
-//Middleware2
-app.use(function (req, res, next) {
-    console.log('My name from MW1', req.myName);
-    next();
-})
+// // Middleware1
+// app.use(function (req, res, next) {
+//     req.myName = "Naveen";
+//     console.log('middeleware 1 called');
+//     next();
+// });
+// //Middleware2
+// app.use(function (req, res, next) {
+//     console.log('My name from MW1', req.myName);
+//     next();
+// })
 
 
-var contactList = [ //list
-    {
-        name: "name",
-        roll: "8668"
-    }
+// var contactList = [ //list
+//     {
+//         name: "name",
+//         roll: "8668"
+//     }
 
 
-]
+// ]
 
 // Home page GET request
 app.get('/', function (req, res) { 
@@ -56,18 +56,15 @@ app.get('/', function (req, res) {
 // Home page POST request 
 app.post('/action_handle', function (req, res) {  // Adding to list
 
-    // return res.render('contact',{
-    //     title: "After form submittion"
-    // });
-    // contactList.push({
-    //     name: req.body.name,
-    //     roll: req.body.roll
-    // });
-    // contactList.push( req.body );
     Contact.create({ // Storing data to database
         // 
-        name: req.body.name,
-        roll: req.body.roll
+       ename: req.body.ename,
+       name: req.body.name,
+       date1: req.body.date1,
+       date2: req.body.date2,
+       place: req.body.place,
+       mobile: req.body.mobile,
+       email: req.body.email
     }, (err, newContact) => {
         if (err) {
             console.log('error in creating a contact!');
@@ -86,8 +83,13 @@ app.post('/action_handle', function (req, res) {  // Adding to list
 app.post('/action_delete', function (req, res) {
 
     contactList.pop({
+        ename: req.body.ename,
         name: req.body.name,
-        roll: req.body.roll
+        date1: req.body.date1,
+        date2: req.body.date2,
+        place: req.body.place,
+        mobile: req.body.mobile,
+        email: req.body.email
     });
     res.redirect('back');
 
